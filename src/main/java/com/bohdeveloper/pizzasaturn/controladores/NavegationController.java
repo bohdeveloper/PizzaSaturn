@@ -11,6 +11,11 @@ public class NavegationController {
         return "index";
     }
 
+    @GetMapping("/registro")
+    public String goRegistro(){
+        return "registro";
+    }
+
     @GetMapping("/login")
     public String goLogin(){
         return "login";
