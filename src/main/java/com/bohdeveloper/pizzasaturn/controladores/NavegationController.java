@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class NavegationController {
     
     @GetMapping("/")
-    public String goIndex(){
-        return "index";
+    public String goPrincipal(){
+        return "principal";
     }
 
     @GetMapping("/registro")
@@ -19,6 +19,16 @@ public class NavegationController {
     @GetMapping("/login")
     public String goLogin(){
         return "login";
+    }
+
+    @GetMapping("/usuario")
+    public String goUsuario(){
+        return "index";
+    }
+
+    @GetMapping("/logout")
+    public String goLogout(){
+        return "logout";
     }
 
 
