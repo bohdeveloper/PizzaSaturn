@@ -22,8 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/tienda/**").authenticated()// <-- Acceso a usuarios registrados / .hasRole("ADMIN") <-- Acceso al rol administrador
 			.anyRequest().permitAll()
 			.and()
-		.formLogin();
-//			.loginPage("/login")
+		.formLogin()
+			.loginPage("/login");
 //			.permitAll()
 //			.and()
 //		.logout()

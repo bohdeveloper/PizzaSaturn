@@ -41,9 +41,25 @@
       </div>
     </div>
   </nav>
-  <h1>Formulario inicio sesión</h1>
-  <a href="#" th:href="@{/acceso}" class="btn btn-info">Entrar</a>
-  <a href="#" th:href="@{/registro}">No tengo cuenta</a>
+  <h3 class="p-2 mt-5 mb-3 text-center">NECESITAS INICIAR SESIÓN PARA REALIZAR PEDIDOS</h3>
+
+  <div class="d-flex justify-content-center">
+    <div class="w-50">
+      <form th:action="@{/login}" method="post">
+        <div class="p-2">
+          <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="email">
+        </div>
+        <div class="p-2">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+        </div>
+        <div class="p-2">
+          <button type="submit" class="btn btn-danger mb-3">Iniciar sesión</button>
+          <a href="#" th:href="@{/registro}" class="text-danger">No tengo cuenta</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
 </body>
 
 </html>
