@@ -23,27 +23,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.anyRequest().permitAll()
 			.and()
 		.formLogin()
-			.loginPage("/login");
-//			.permitAll()
-//			.and()
-//		.logout()
-//			.permitAll();
+			.loginPage("/login")
+		.permitAll()
+			.and()
+			.logout()
+		.permitAll();
 	}
 
-/* 	@Bean
-	@Override
-	public UserDetailsService userDetailsService() {
-	@SuppressWarnings("deprecation")
-		UserDetails user =
-				 User.withDefaultPasswordEncoder()
-					.username("borja")
-					.password("1234")
-					.roles("admin")
-					.build();
-
-			return new InMemoryUserDetailsManager(user);
-	} */
-	
  	@Autowired
 	private DataSource dataSource;
 
@@ -52,12 +38,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	  throws Exception {
 	    auth.jdbcAuthentication()
 	      .dataSource(dataSource)
-	      .usersByUsernameQuery("select email,password,1 "
-	        + "from usuarios "
-	        + "where email = ?")
+	      .usersByUsernameQuery("SELECT email, password, 1 "
+	        + "FROM usuarios "
+	        + "WHERE email = ?")
 	      .authoritiesByUsernameQuery("SELECT u.email, CONCAT('ROLE_', r.nombre) "
 		    + "FROM usuarios u JOIN roles r ON u.rol_id = r.id "
-	        + "WHERE email = ?");
+	        + "WHERE u.email = ?");
 	}
 
 	@Bean
