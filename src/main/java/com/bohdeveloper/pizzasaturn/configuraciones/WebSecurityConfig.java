@@ -38,13 +38,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	  throws Exception {
 	    auth.jdbcAuthentication()
 	      .dataSource(dataSource)
-	      .usersByUsernameQuery("SELECT email, password, 1 "
+		  
+	//Iniciar sesión con email
+	.usersByUsernameQuery("SELECT email, password, 1 "
 	        + "FROM usuarios "
 	        + "WHERE email = ?")
 	      .authoritiesByUsernameQuery("SELECT u.email, CONCAT('ROLE_', r.nombre) "
 		    + "FROM usuarios u JOIN roles r ON u.rol_id = r.id "
-	        + "WHERE u.email = ?");
+	        + "WHERE email = ?");
 	}
+
+	//Iniciar sesión con nombre de usuario
+/* 	.usersByUsernameQuery("SELECT nombre, password, 1 "
+	        + "FROM usuarios "
+	        + "WHERE nombre = ?")
+	      .authoritiesByUsernameQuery("SELECT u.nombre, CONCAT('ROLE_', r.nombre) "
+		    + "FROM usuarios u JOIN roles r ON u.rol_id = r.id "
+	        + "WHERE u.nombre = ?");
+	} */
+
+	
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {

@@ -36,13 +36,13 @@ public class PizzasaturnApplication implements CommandLineRunner {
 
 		// Creación de usuarios
 		uRep.save(new Usuario(null, "admin", "admin@pizzasaturn.com",
-				"$2a$11$2Ycwd7cv3yyqaY9ulu5v9eHsYyhh82w3KZNeyGLq/fJ3trQ6adfqa", rolAdmin));
+				"$2a$12$Jlz419IFeL3JNzraQIxdBe.1gaAOHUyw3PrV/eyd97lruJrvzaC.2", rolAdmin));
 
 		uRep.save(new Usuario(null, "user", "user@pizzasaturn.com",
-				"$2a$11$2Ycwd7cv3yyqaY9ulu5v9eHsYyhh82w3KZNeyGLq/fJ3trQ6adfqa", rolUser));
+				"$2a$12$Jlz419IFeL3JNzraQIxdBe.1gaAOHUyw3PrV/eyd97lruJrvzaC.2", rolUser));
 
 		uRep.save(new Usuario(null, "userpro", "userpro@pizzasaturn.com",
-				"$2a$11$2Ycwd7cv3yyqaY9ulu5v9eHsYyhh82w3KZNeyGLq/fJ3trQ6adfqa", rolUserPro));
+				"$2a$12$Jlz419IFeL3JNzraQIxdBe.1gaAOHUyw3PrV/eyd97lruJrvzaC.2", rolUserPro));
 
 	}
 
