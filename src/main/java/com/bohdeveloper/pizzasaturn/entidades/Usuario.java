@@ -1,5 +1,6 @@
 package com.bohdeveloper.pizzasaturn.entidades;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,11 +23,14 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
+    @Basic(optional = false)
+    private String username;
+    @Basic(optional = false)
     private String email;
+    @Basic(optional = false)
     private String password;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Rol rol;
 
 }
