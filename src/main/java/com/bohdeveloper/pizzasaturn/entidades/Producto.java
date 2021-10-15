@@ -29,7 +29,12 @@ public class Producto {
     @Basic(optional = false)
     private String nombre;
 
+    @Basic(optional = false)
     private BigDecimal precio;
 
+    @Basic(optional = false)
+    private int disponible;
+
     private String ImagenUrl;
+    
 }
