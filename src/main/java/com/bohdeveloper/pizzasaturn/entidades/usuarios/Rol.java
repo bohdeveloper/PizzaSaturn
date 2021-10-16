@@ -1,4 +1,4 @@
-package com.bohdeveloper.pizzasaturn.entidades;
+package com.bohdeveloper.pizzasaturn.entidades.usuarios;
 
 import java.util.ArrayList;
 import java.util.List;

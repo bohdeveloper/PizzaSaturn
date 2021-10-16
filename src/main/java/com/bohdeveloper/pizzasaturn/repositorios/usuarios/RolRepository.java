@@ -1,6 +1,6 @@
-package com.bohdeveloper.pizzasaturn.repositorios;
+package com.bohdeveloper.pizzasaturn.repositorios.usuarios;
 
-import com.bohdeveloper.pizzasaturn.entidades.Rol;
+import com.bohdeveloper.pizzasaturn.entidades.usuarios.Rol;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

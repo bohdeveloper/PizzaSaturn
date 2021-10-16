@@ -1,4 +1,4 @@
-package com.bohdeveloper.pizzasaturn.repositorios;
+package com.bohdeveloper.pizzasaturn.repositorios.sucursales;
 
 import com.bohdeveloper.pizzasaturn.entidades.sucursales.Inventario;
 

@@ -2,16 +2,16 @@ package com.bohdeveloper.pizzasaturn;
 
 import java.math.BigDecimal;
 
-import com.bohdeveloper.pizzasaturn.entidades.Rol;
-import com.bohdeveloper.pizzasaturn.entidades.Usuario;
 import com.bohdeveloper.pizzasaturn.entidades.sucursales.Inventario;
 import com.bohdeveloper.pizzasaturn.entidades.sucursales.Producto;
 import com.bohdeveloper.pizzasaturn.entidades.sucursales.ProductoCategoria;
-import com.bohdeveloper.pizzasaturn.repositorios.ProductoCantidadRepository;
-import com.bohdeveloper.pizzasaturn.repositorios.ProductoCategoriaRepository;
-import com.bohdeveloper.pizzasaturn.repositorios.ProductoRepository;
-import com.bohdeveloper.pizzasaturn.repositorios.RolRepository;
-import com.bohdeveloper.pizzasaturn.repositorios.UsuarioRepository;
+import com.bohdeveloper.pizzasaturn.entidades.usuarios.Rol;
+import com.bohdeveloper.pizzasaturn.entidades.usuarios.Usuario;
+import com.bohdeveloper.pizzasaturn.repositorios.sucursales.ProductoCantidadRepository;
+import com.bohdeveloper.pizzasaturn.repositorios.sucursales.ProductoCategoriaRepository;
+import com.bohdeveloper.pizzasaturn.repositorios.sucursales.ProductoRepository;
+import com.bohdeveloper.pizzasaturn.repositorios.usuarios.RolRepository;
+import com.bohdeveloper.pizzasaturn.repositorios.usuarios.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

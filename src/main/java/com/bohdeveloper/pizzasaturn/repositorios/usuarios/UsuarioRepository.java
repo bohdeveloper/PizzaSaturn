@@ -1,6 +1,6 @@
-package com.bohdeveloper.pizzasaturn.repositorios;
+package com.bohdeveloper.pizzasaturn.repositorios.usuarios;
 
-import com.bohdeveloper.pizzasaturn.entidades.Usuario;
+import com.bohdeveloper.pizzasaturn.entidades.usuarios.Usuario;
 
 import org.springframework.data.repository.CrudRepository;
 
