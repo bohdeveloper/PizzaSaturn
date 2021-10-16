@@ -25,17 +25,24 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotNull(message = "El nombre del producto es obligatorio")
     @Basic(optional = false)
     private String nombre;
+
     @Basic(optional = false)
     private BigDecimal precio;
+
     @Basic(optional = false)
     private int disponible;
+
+    @Basic(optional = true)
     private String ImagenUrl;
+
     @ManyToOne(optional = false)
     private ProductoCategoria prod_cat;
-    @ManyToOne(optional = false)
+    
+    @ManyToOne(optional = true)
     private Almacen almacen;
     
 }

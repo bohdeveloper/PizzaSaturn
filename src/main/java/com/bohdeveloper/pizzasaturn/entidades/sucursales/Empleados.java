@@ -22,10 +22,13 @@ public class Empleados {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
+
     @Basic(optional = false)
     private String nombre;
+
     @Basic(optional = false)
     private String apellidos;
+    
     @ManyToOne(optional = false)
     private Sucursal sucursal;
 }

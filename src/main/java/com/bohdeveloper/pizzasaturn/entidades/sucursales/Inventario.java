@@ -22,10 +22,13 @@ public class Inventario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Basic(optional = false)
-    private String nombre;
+    
     @Basic(optional = false)
     private int cantidad;
+
     @OneToOne(optional = false)
     private Producto producto;
+
+    @OneToOne(optional = false)
+    private Almacen almacen;
 }

@@ -19,14 +19,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Usuario {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Basic(optional = false)
     private String username;
+
     @Basic(optional = false)
     private String email;
+    
     @Basic(optional = false)
     private String password;
 

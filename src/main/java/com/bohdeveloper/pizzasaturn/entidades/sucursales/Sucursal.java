@@ -13,7 +13,9 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "sucursales")
@@ -25,8 +27,12 @@ public class Sucursal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Basic(optional = false)
     private String direccion;
-    @OneToMany(mappedBy = "empleados")
-    private List<ProductoCategoria> empleados = new ArrayList<>();
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "sucursales")
+    private List<Sucursal> sucursales = new ArrayList<>();
 }

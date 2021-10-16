@@ -5,5 +5,5 @@ import com.bohdeveloper.pizzasaturn.entidades.sucursales.Almacen;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AlmacenRepository extends CrudRepository<Almacen, Long> {
-    Almacen findByNombre(String nombre);
+
 }

@@ -21,24 +21,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Cliente{
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Basic(optional = false)
     private String nombre;
+
     @Basic(optional = false)
     private String apellidos;
+
     @Basic(optional = true)
     private String empresa;
+
     @Basic(optional = false)
     private String direccion;
+
     @Basic(optional = false)
     private String poblacion;
+
     @Basic(optional = true)
     private String ult_compra;
+
     @Basic(optional = false)
     private LocalDate f_nacim;
+    
     @Basic(optional = true)
     private char sexo;
 
