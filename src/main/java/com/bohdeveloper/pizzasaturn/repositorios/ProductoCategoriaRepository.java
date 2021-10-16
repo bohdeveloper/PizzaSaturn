@@ -1,6 +1,6 @@
 package com.bohdeveloper.pizzasaturn.repositorios;
 
-import com.bohdeveloper.pizzasaturn.entidades.ProductoCategoria;
+import com.bohdeveloper.pizzasaturn.entidades.sucursales.ProductoCategoria;
 
 import org.springframework.data.repository.CrudRepository;
 

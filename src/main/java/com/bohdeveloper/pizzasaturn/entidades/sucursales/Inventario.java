@@ -1,44 +1,31 @@
-package com.bohdeveloper.pizzasaturn.entidades;
-
-import java.math.BigDecimal;
+package com.bohdeveloper.pizzasaturn.entidades.sucursales;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "productos")
+@Table(name = "cant_productos")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Producto {
+public class Inventario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotNull(message = "El nombre del producto es obligatorio")
     @Basic(optional = false)
     private String nombre;
-
     @Basic(optional = false)
-    private BigDecimal precio;
-
-    @Basic(optional = false)
-    private int disponible;
-
-    private String ImagenUrl;
-
-    @ManyToOne(optional = false)
-    private ProductoCategoria prod_cat;
-    
+    private int cantidad;
+    @OneToOne(optional = false)
+    private Producto producto;
 }

@@ -2,11 +2,11 @@ package com.bohdeveloper.pizzasaturn;
 
 import java.math.BigDecimal;
 
-import com.bohdeveloper.pizzasaturn.entidades.Inventario;
-import com.bohdeveloper.pizzasaturn.entidades.Producto;
-import com.bohdeveloper.pizzasaturn.entidades.ProductoCategoria;
 import com.bohdeveloper.pizzasaturn.entidades.Rol;
 import com.bohdeveloper.pizzasaturn.entidades.Usuario;
+import com.bohdeveloper.pizzasaturn.entidades.sucursales.Inventario;
+import com.bohdeveloper.pizzasaturn.entidades.sucursales.Producto;
+import com.bohdeveloper.pizzasaturn.entidades.sucursales.ProductoCategoria;
 import com.bohdeveloper.pizzasaturn.repositorios.ProductoCantidadRepository;
 import com.bohdeveloper.pizzasaturn.repositorios.ProductoCategoriaRepository;
 import com.bohdeveloper.pizzasaturn.repositorios.ProductoRepository;
