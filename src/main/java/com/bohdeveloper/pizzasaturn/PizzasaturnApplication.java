@@ -2,10 +2,12 @@ package com.bohdeveloper.pizzasaturn;
 
 import java.math.BigDecimal;
 
+import com.bohdeveloper.pizzasaturn.entidades.Inventario;
 import com.bohdeveloper.pizzasaturn.entidades.Producto;
 import com.bohdeveloper.pizzasaturn.entidades.ProductoCategoria;
 import com.bohdeveloper.pizzasaturn.entidades.Rol;
 import com.bohdeveloper.pizzasaturn.entidades.Usuario;
+import com.bohdeveloper.pizzasaturn.repositorios.ProductoCantidadRepository;
 import com.bohdeveloper.pizzasaturn.repositorios.ProductoCategoriaRepository;
 import com.bohdeveloper.pizzasaturn.repositorios.ProductoRepository;
 import com.bohdeveloper.pizzasaturn.repositorios.RolRepository;
@@ -28,15 +30,19 @@ public class PizzasaturnApplication implements CommandLineRunner {
 	@Autowired
 	private RolRepository roRep;
 
-	/*
-	 * @Autowired private ClienteRepository cRep;
-	 */
-
 	@Autowired
 	private ProductoRepository prRep;
 
 	@Autowired
-	private ProductoCategoriaRepository prcaRep;
+	private ProductoCategoriaRepository prcatRep;
+
+	@Autowired 
+	private ProductoCantidadRepository prcanRep;
+
+	/*
+	 * @Autowired private ClienteRepository cRep;
+	 */
+
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -63,25 +69,35 @@ public class PizzasaturnApplication implements CommandLineRunner {
 		usRep.save(user);
 		usRep.save(userpro);
 
-		// Creación de categorias para ProductoRepository
-		prcaRep.save(new ProductoCategoria(null, "Pizzas", null));
-		prcaRep.save(new ProductoCategoria(null, "Ensaladas", null));
-		prcaRep.save(new ProductoCategoria(null, "Complementos", null));
-		prcaRep.save(new ProductoCategoria(null, "Bebidas", null));
-		prcaRep.save(new ProductoCategoria(null, "Postres", null));
+		// Creación de categorias para productos
+		prcatRep.save(new ProductoCategoria(null, "Pizzas", null));
+		prcatRep.save(new ProductoCategoria(null, "Ensaladas", null));
+		prcatRep.save(new ProductoCategoria(null, "Complementos", null));
+		prcatRep.save(new ProductoCategoria(null, "Bebidas", null));
+		prcatRep.save(new ProductoCategoria(null, "Postres", null));
 
-		// Creación de productos
-		ProductoCategoria catPiz = prcaRep.findByNombre("Pizzas");
+		// Creación de productos y sus cantidades en stock
+		ProductoCategoria catPiz = prcatRep.findByNombre("Pizzas");
 		Producto pizSaturn = new Producto(null, "Saturn", new BigDecimal(12.90), 1, null, catPiz);
+		Inventario cantPizSaturn = new Inventario(null, "Pizza Saturn", 10, pizSaturn);
+
 		Producto margarita = new Producto(null, "Margarita", new BigDecimal(09.90), 1, null, catPiz);
+
 		Producto carbonara = new Producto(null, "Carbonara", new BigDecimal(12.90), 1, null, catPiz);
+
 		Producto romana = new Producto(null, "Romana", new BigDecimal(10.90), 1, null, catPiz);
+
 		Producto barbacoa = new Producto(null, "Barbacoa", new BigDecimal(12.90), 1, null, catPiz);
+
 		Producto cuaQueso = new Producto(null, "Cuatro quesos", new BigDecimal(12.90), 1, null, catPiz);
+
 		Producto marinera = new Producto(null, "Marinera", new BigDecimal(10.90), 1, null, catPiz);
+		
 		Producto hawaiana = new Producto(null, "Hawaiana", new BigDecimal(11.90), 1, null, catPiz);
 
 		prRep.save(pizSaturn);
+		prcanRep.save(cantPizSaturn);
+
 		prRep.save(margarita);
 		prRep.save(carbonara);
 		prRep.save(romana);
@@ -90,7 +106,7 @@ public class PizzasaturnApplication implements CommandLineRunner {
 		prRep.save(marinera);
 		prRep.save(hawaiana);
 
-		ProductoCategoria catEns = prcaRep.findByNombre("Ensaladas");
+		ProductoCategoria catEns = prcatRep.findByNombre("Ensaladas");
 		Producto ensSat = new Producto(null, "Saturn", new BigDecimal(08.90), 1, null, catEns);
 		Producto ensMix = new Producto(null, "Mixta", new BigDecimal(05.90), 1, null, catEns);
 		Producto ensCes = new Producto(null, "Cesar", new BigDecimal(06.90), 1, null, catEns);
@@ -103,7 +119,7 @@ public class PizzasaturnApplication implements CommandLineRunner {
 		prRep.save(ensCap);
 		prRep.save(ensGri);
 
-		ProductoCategoria catCom = prcaRep.findByNombre("Complementos");
+		ProductoCategoria catCom = prcatRep.findByNombre("Complementos");
 		Producto metPollo = new Producto(null, "Meteoritos de pollo", new BigDecimal(03.90), 1, null, catCom);
 		Producto alPollo = new Producto(null, "Alitas de pollo", new BigDecimal(03.90), 1, null, catCom);
 		Producto metQueso = new Producto(null, "Meteoritos de queso", new BigDecimal(03.90), 1, null, catCom);
@@ -120,7 +136,7 @@ public class PizzasaturnApplication implements CommandLineRunner {
 		prRep.save(lunPat);
 		prRep.save(comSat);
 
-		ProductoCategoria catBeb = prcaRep.findByNombre("Bebidas");
+		ProductoCategoria catBeb = prcatRep.findByNombre("Bebidas");
 		Producto coca = new Producto(null, "Coca Cola", new BigDecimal(01.90), 1, null, catBeb);
 		Producto cocaZ = new Producto(null, "Coca Cola Zero", new BigDecimal(01.90), 1, null, catBeb);
 		Producto kasNa = new Producto(null, "Kas naranja", new BigDecimal(01.90), 1, null, catBeb);
@@ -139,7 +155,7 @@ public class PizzasaturnApplication implements CommandLineRunner {
 		prRep.save(cerv);
 		prRep.save(agua);
 
-		ProductoCategoria catPos = prcaRep.findByNombre("Postres");
+		ProductoCategoria catPos = prcatRep.findByNombre("Postres");
 		Producto choLun = new Producto(null, "Choco luna", new BigDecimal(04.90), 1, null, catPos);
 		Producto plaLim = new Producto(null, "Planeta limón", new BigDecimal(04.40), 1, null, catPos);
 		Producto helSat = new Producto(null, "Helado Saturn", new BigDecimal(04.90), 1, null, catPos);
