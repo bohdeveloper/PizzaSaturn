@@ -1,4 +1,4 @@
-package com.bohdeveloper.pizzasaturn.entidades.proveedores;
+package com.bohdeveloper.pizzasaturn.entidades.usuarios;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,40 +13,39 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.bohdeveloper.pizzasaturn.entidades.sucursales.Empleado;
 import com.bohdeveloper.pizzasaturn.entidades.sucursales.Producto;
-import com.bohdeveloper.pizzasaturn.entidades.sucursales.Sucursal;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "pedidos")
 @Data
+@Table(name = "facturas_clientes")
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class PedidoProveedor {
+public class FacturaCliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Basic(optional = false)
-    private int cant_producto;
-    
+    private int cantidad;
+
     @Basic(optional = false)
     private BigDecimal precio_total;
 
     @Basic(optional = false)
-    private LocalDate f_pedido;
+    private LocalDate f_factura;
 
     @ManyToOne(optional = false)
-    private Producto producto;
+    private Cliente cliente;
 
     @ManyToOne(optional = false)
-    private Sucursal sucursal;
+    private Empleado empleado;
 
-    @ManyToMany(mappedBy = "pedidos")
-    private List<Proveedor> proveedores;
-    
+    @ManyToMany(mappedBy = "facturas")
+    private List<Producto> productos;
 }

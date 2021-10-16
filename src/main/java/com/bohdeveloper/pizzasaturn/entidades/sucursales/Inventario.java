@@ -1,5 +1,7 @@
 package com.bohdeveloper.pizzasaturn.entidades.sucursales;
 
+import java.time.LocalDate;
+
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +28,9 @@ public class Inventario {
     @Basic(optional = false)
     private int cantidad;
 
-    @OneToOne(optional = false)
-    private Producto producto;
+    @Basic(optional = false)
+    private LocalDate f_caduc;
 
     @OneToOne(optional = false)
-    private Almacen almacen;
+    private Producto producto;
 }

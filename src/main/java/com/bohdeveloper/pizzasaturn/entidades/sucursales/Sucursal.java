@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.bohdeveloper.pizzasaturn.entidades.proveedores.PedidoProveedor;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,8 +33,24 @@ public class Sucursal {
     @Basic(optional = false)
     private String direccion;
 
+    @Basic(optional = true)
+    private Integer num_almacenes;
+
+    @Basic(optional = true)
+    private Integer num_empleados;
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(mappedBy = "sucursales")
-    private List<Sucursal> sucursales = new ArrayList<>();
+    @OneToMany(mappedBy = "sucursal")
+    private List<Almacen> almacenes = new ArrayList<>();
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "sucursal")
+    private List<Empleado> empleados = new ArrayList<>();
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "sucursal")
+    private List<PedidoProveedor> pedidos = new ArrayList<>();
 }

@@ -3,12 +3,13 @@ package com.bohdeveloper.pizzasaturn.entidades.sucursales;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -28,11 +29,14 @@ public class Almacen {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(optional = false)
+    @Basic(optional = false)
+    private String nombre;
+
+    @ManyToOne(optional = false)
     private Sucursal sucursal;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(mappedBy = "almacenes")
-    private List<Almacen> almacenes = new ArrayList<>();
+    @OneToMany(mappedBy = "almacen")
+    private List<Producto> productos = new ArrayList<>();
 }

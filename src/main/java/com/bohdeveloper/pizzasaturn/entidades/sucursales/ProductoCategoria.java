@@ -35,6 +35,6 @@ public class ProductoCategoria {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(mappedBy = "categorias")
-    private List<ProductoCategoria> categorias = new ArrayList<>();
+    @OneToMany(mappedBy = "prod_cat")
+    private List<Producto> productos = new ArrayList<>();
 }
