@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PizzaSaturn - Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/home.js"></script>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" th:href="@{/}"><img src="#" th:src="@{img/logo_pizzasaturn.png}"
+                    alt="pizzasaturn" id="logo"></a>
+        </div>
+    </nav>
+
+    <h3 class="p-4 mt-5 mb-3 text-center text-danger font-weight-light">¡Será un placer conocerte!</h3>
+
+    <form class="m-2" th:action="@{/registro/validate}" method="post">
+        <div class="row">
+            <div class="col-1 col-sm-3 col-lg-3"></div>
+            <div class="col-sm-8 col-lg-6">
+                <div class="mb-3 row">
+                    <div class="col-sm-12 col-xl-4">
+                        <label for="nombre_usuario" class="form-label">Nombre de
+                            usuario</label> <input type="text" class="form-control" value="" id="nombre_usuario"
+                            name="nombre_usuario">
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <label for="password1" class="form-label">Contraseña</label> <input type="password"
+                            class="form-control" value="" id="password1" name="password1">
+
+
+                    </div>
+                    <div class="col-sm-6 col-xl-4">
+                        <label for="password2" class="form-label">Repite la
+                            contraseña</label> <input type="password" class="form-control" value="" id="password2"
+                            name="password2">
+
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-6">
+                        <label for="email" class="form-label">Correo electrónico</label> <input type="email"
+                            class="form-control" value="" id="email" name="email">
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="sexo" class="form-label">Sexo</label>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sexo" id="inlineRadio1"
+                                    value="hombre" checked> <label class="form-check-label"
+                                    for="inlineRadio1">Hombre</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sexo" id="inlineRadio2"
+                                    value="mujer"> <label class="form-check-label" for="inlineRadio2">Mujer</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="saldo" value="0.00">
+                <input type="hidden" name="rol_id" value="2">
+                <div class="w-100 d-flex justify-content-end">
+                    <button class="btn btn-danger w-25 mt-3" type="submit">Enviar</button>
+                </div>
+            </div>
+            <div class="col-1 col-sm-12"></div>
+        </div>
+    </form>
+
+</body>
+
+</html>
