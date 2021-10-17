@@ -50,6 +50,9 @@ public class Cliente{
 
     @Basic(optional = false)
     private LocalDate f_nacim;
+
+    @Basic(optional = true)
+    private int saldo;
     
     @Basic(optional = true)
     private char sexo;
