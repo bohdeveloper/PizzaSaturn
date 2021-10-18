@@ -10,3 +10,7 @@
 .bg-color {
     background-color: var(--bg-color) !important;
 }
+
+.pagMinHeight {
+  min-height: 30rem;
+}
