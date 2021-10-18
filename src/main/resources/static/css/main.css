@@ -1,16 +1,29 @@
 :root {
   --bg-color: #161616;
 }
+
+body {
+  background-image: url(../img/bg/b4.jpg) !important;
+  background-repeat: no-repeat;
+  background-position: -10px -370px;
+}
+
+p, h1, h2, h3, h4, h5 {
+  margin: 0;
+  padding: 0;
+}
+
 #logo {
   width: 9rem;
   height: 5.5rem;
-  margin: 1rem;
+  margin: 0.9rem;
 }
 
 .bg-color {
-    background-color: var(--bg-color) !important;
+  background-color: var(--bg-color) !important;
 }
 
 .pagMinHeight {
-  min-height: 30rem;
+  width: 100%;
+  height: 30rem;
 }
