@@ -1,11 +1,18 @@
 :root {
-  --bg-color: #161616;
+  --bg-blk: #000;
+  --bg-blkopa: #161616aa;
 }
 
-body {
+.bgblur {
   background-image: url(../img/bg/b4.jpg) !important;
   background-repeat: no-repeat;
-  background-position: -10px -370px;
+  background-position: -10px -220px;
+}
+
+.bgopa {
+  background-image: url(../img/bg/b4_off.jpg) !important;
+  background-repeat: no-repeat;
+  background-position: -10px -220px;
 }
 
 p, h1, h2, h3, h4, h5 {
@@ -19,8 +26,14 @@ p, h1, h2, h3, h4, h5 {
   margin: 0.9rem;
 }
 
-.bg-color {
-  background-color: var(--bg-color) !important;
+.bg-blk {
+  background-color: var(--bg-blk) !important;
+  border-top: 3px solid red;
+}
+
+.bg-blkopa {
+  background-color: var(--bg-blkopa) !important;
+  border-bottom: 7px solid red;
 }
 
 .pagMinHeight {
