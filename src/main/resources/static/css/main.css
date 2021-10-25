@@ -3,14 +3,8 @@
   --bg-blkopa: #161616aa;
 }
 
-.bgblur {
-  background-image: url(../img/bg/b4.jpg) !important;
-  background-repeat: no-repeat;
-  background-position: -10px -220px;
-}
-
 .bgopa {
-  background-image: url(../img/bg/b4_off.jpg) !important;
+  background-image: url(../img/bg/b4.jpg) !important;
   background-repeat: no-repeat;
   background-position: -10px -220px;
 }
