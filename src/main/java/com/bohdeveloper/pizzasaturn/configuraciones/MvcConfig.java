@@ -1,4 +1,4 @@
-package com.bohdeveloper.pizzasaturn.configuraciones;
+/* package com.bohdeveloper.pizzasaturn.configuraciones;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -17,4 +17,4 @@ public class MvcConfig implements WebMvcConfigurer {
 
     }
 
-}
+} */
