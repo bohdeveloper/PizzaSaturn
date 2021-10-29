@@ -36,7 +36,7 @@
                                 th:href="@{/tienda}">TIENDA</a>
                         </li>
                         
-                        <li class="nav-item">
+                        <li th:if="${usuario != null}" class="nav-item">
                             <form th:action="@{/logout}" method="post">
                                 <button  class="btn btn-danger ms-3">CERRAR SESIÓN</button>
                             </form>
