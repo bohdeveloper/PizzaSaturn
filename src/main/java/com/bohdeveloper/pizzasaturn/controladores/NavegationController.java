@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class NavegationController {
-    /* registry.addViewController("/").setViewName("index");
-    registry.addViewController("/tienda").setViewName("tienda/index");
-    registry.addViewController("/registro").setViewName("registro");
-    registry.addViewController("/login").setViewName("login");
-    registry.addViewController("/contacto").setViewName("contacto"); */
 
     @GetMapping("/")
     public String goIndex(HttpServletRequest request) {
