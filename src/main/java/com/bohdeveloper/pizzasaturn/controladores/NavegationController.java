@@ -2,13 +2,19 @@ package com.bohdeveloper.pizzasaturn.controladores;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.bohdeveloper.pizzasaturn.dal.Dao;
 import com.bohdeveloper.pizzasaturn.entidades.usuarios.Usuario;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class NavegationController {
+
+    //Da problemas
+    @Autowired
+    public Dao<Usuario> dao;
 
     @GetMapping("/")
     public String goIndex(HttpServletRequest request) {
@@ -16,8 +22,10 @@ public class NavegationController {
     }
 
     @GetMapping("/tienda")
-    public String goTienda(Usuario usuario, HttpServletRequest request) {
+    public String goTienda(HttpServletRequest request) {
+        Usuario usuario = new Usuario();
         request.setAttribute("usuario", usuario);
+        request.setAttribute("usuarios", dao.obtenerTodos());
         return "tienda/index";
     }
 
