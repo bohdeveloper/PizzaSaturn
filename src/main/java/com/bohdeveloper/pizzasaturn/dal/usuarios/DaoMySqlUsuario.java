@@ -12,11 +12,13 @@ import com.bohdeveloper.pizzasaturn.dal.Dao;
 import com.bohdeveloper.pizzasaturn.entidades.usuarios.Rol;
 import com.bohdeveloper.pizzasaturn.entidades.usuarios.Usuario;
 
+import org.springframework.stereotype.Repository;
+@Repository
 public class DaoMySqlUsuario implements Dao<Usuario> {
     private static final String URL_BD = "jdbc:mysql://localhost:3306/pizzasaturn";
     private static final String USUARIO_BD = "root";
     private static final String PASSWORD_BD = "";
-    private static final String SQL_SELECT = "SELECT * FROM usuarios u JOIN roles r ON r.id = u.roles_id ORDER BY r.id";
+    private static final String SQL_SELECT = "SELECT * FROM usuarios u JOIN roles r ON r.id = u.rol_id ORDER BY r.id";
 
     static {
         try {

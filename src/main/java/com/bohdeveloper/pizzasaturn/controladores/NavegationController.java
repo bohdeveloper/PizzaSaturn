@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class NavegationController {
 
-    //Da problemas
     @Autowired
-    public Dao<Usuario> dao;
+    private Dao<Usuario> daoUsuario;
 
     @GetMapping("/")
     public String goIndex(HttpServletRequest request) {
@@ -23,9 +22,12 @@ public class NavegationController {
 
     @GetMapping("/tienda")
     public String goTienda(HttpServletRequest request) {
+
         Usuario usuario = new Usuario();
+        Iterable<Usuario> usuarios = daoUsuario.obtenerTodos();
+
         request.setAttribute("usuario", usuario);
-        request.setAttribute("usuarios", dao.obtenerTodos());
+        request.setAttribute("usuarios", usuarios);
         return "tienda/index";
     }
 
