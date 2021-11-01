@@ -21,7 +21,7 @@ public class DaoMySqlUsuario implements Dao<Usuario> {
     private static final String PASSWORD_BD = "";
     private static final String SQL_SELECT = "SELECT * FROM usuarios u JOIN roles r ON r.id = u.rol_id ORDER BY r.id";
     private static final String SQL_SELECT_ID = "SELECT * FROM usuarios WHERE id = ?";
-	private static final String SQL_INSERT = "INSERT INTO platos (nombre, descripcion, receta, url_imagen, calorias, origenes_id) VALUES(?,?,?,?,?,?)";
+	private static final String SQL_INSERT = "INSERT INTO usuarios (username, email, password, rol_id) VALUES(?,?,?,?)";
 	private static final String SQL_UPDATE = "UPDATE platos SET nombre=?,descripcion=?,receta=?,url_imagen=?,calorias=?,origenes_id=? WHERE id=?";
 	private static final String SQL_DELETE = "DELETE FROM platos WHERE id = ?";
     
@@ -91,4 +91,27 @@ public class DaoMySqlUsuario implements Dao<Usuario> {
         }
 
     }
+
+    @Override
+	public Usuario insertar(Usuario usuario) {
+		try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_INSERT)) {
+			ps.setString(1, usuario.getUsername());
+			ps.setString(2, usuario.getEmail());
+			ps.setString(3, usuario.getPassword());
+			ps.setLong(4, usuario.getRol().getId());
+		
+
+			if (ps.executeUpdate() != 1) {
+				throw new DalException("Se ha insertado un número de registros erroneo");
+			} else {
+				ResultSet rs = ps.getGeneratedKeys();
+				rs.next();
+				usuario.setId(rs.getLong(1));
+				return usuario;
+			}
+
+		} catch (SQLException e) {
+			throw new DalException("No se ha podido añadir el plato: " + usuario, e);
+		}
+	}
 }
