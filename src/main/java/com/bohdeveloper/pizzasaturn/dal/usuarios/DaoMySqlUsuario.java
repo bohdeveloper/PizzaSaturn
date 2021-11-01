@@ -13,13 +13,18 @@ import com.bohdeveloper.pizzasaturn.entidades.usuarios.Rol;
 import com.bohdeveloper.pizzasaturn.entidades.usuarios.Usuario;
 
 import org.springframework.stereotype.Repository;
+
 @Repository
 public class DaoMySqlUsuario implements Dao<Usuario> {
     private static final String URL_BD = "jdbc:mysql://localhost:3306/pizzasaturn";
     private static final String USUARIO_BD = "root";
     private static final String PASSWORD_BD = "";
     private static final String SQL_SELECT = "SELECT * FROM usuarios u JOIN roles r ON r.id = u.rol_id ORDER BY r.id";
-
+    private static final String SQL_SELECT_ID = "SELECT * FROM usuarios WHERE id = ?";
+	private static final String SQL_INSERT = "INSERT INTO platos (nombre, descripcion, receta, url_imagen, calorias, origenes_id) VALUES(?,?,?,?,?,?)";
+	private static final String SQL_UPDATE = "UPDATE platos SET nombre=?,descripcion=?,receta=?,url_imagen=?,calorias=?,origenes_id=? WHERE id=?";
+	private static final String SQL_DELETE = "DELETE FROM platos WHERE id = ?";
+    
     static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -36,6 +41,7 @@ public class DaoMySqlUsuario implements Dao<Usuario> {
         }
     }
 
+    @Override
     public Iterable<Usuario> obtenerTodos() {
         try (Connection con = obtenerConexion()) {
             PreparedStatement ps = con.prepareStatement(SQL_SELECT);
@@ -57,5 +63,32 @@ public class DaoMySqlUsuario implements Dao<Usuario> {
         } catch (Exception e) {
             throw new DalException("Error al obtener todos los registros", e);
         }
+    }
+
+    @Override
+    public Usuario obtenerPorId(long id) {
+
+        try {
+            Connection con = obtenerConexion();
+            PreparedStatement ps = con.prepareStatement(SQL_SELECT_ID);
+            ps.setLong(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            Usuario usuario = null;
+
+            while (rs.next()) {
+                usuario = new Usuario(rs.getLong("u.id"), rs.getString("u.username"), rs.getString("u.email"),
+                        rs.getString("u.password"), null);
+
+                usuario.setRol(new Rol(rs.getLong("r.id"), rs.getString("r.nombre"), null));
+
+            }
+
+            return usuario;
+        } catch (SQLException e) {
+            throw new DalException("No se ha encontrado el plato con id: " + id, e);
+        }
+
     }
 }
