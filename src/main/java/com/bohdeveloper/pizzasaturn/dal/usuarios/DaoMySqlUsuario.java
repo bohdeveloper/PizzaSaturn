@@ -23,7 +23,7 @@ public class DaoMySqlUsuario implements Dao<Usuario> {
     private static final String SQL_SELECT_ID = "SELECT * FROM usuarios WHERE id = ?";
     private static final String SQL_INSERT = "INSERT INTO usuarios (username, email, password, rol_id) VALUES(?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE usuarios SET username=?,email=?,password=?,rol_id=? WHERE id=?";
-    private static final String SQL_DELETE = "DELETE FROM platos WHERE id = ?";
+    private static final String SQL_DELETE = "DELETE FROM usuarios WHERE id = ?";
 
     static {
         try {
@@ -133,4 +133,17 @@ public class DaoMySqlUsuario implements Dao<Usuario> {
             throw new DalException("No se ha podido modificar el usuario: " + usuario, e);
         }
     }
+
+    @Override
+	public void borrar(long id) {
+		try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_DELETE)) {
+			ps.setLong(1, id);
+
+			if (ps.executeUpdate() != 1) {
+				throw new DalException("Se ha borrado un número de registros diferente de uno");
+			}
+		} catch (Exception e) {
+			throw new DalException("No se ha podido borrar el registro cuyo id es " + id, e);
+		}
+	}
 }
