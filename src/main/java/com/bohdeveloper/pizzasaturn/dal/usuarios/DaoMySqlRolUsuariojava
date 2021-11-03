@@ -22,7 +22,7 @@ public class DaoMySqlRolUsuario implements Dao<Rol> {
     private static final String SQL_SELECT = "SELECT * FROM roles";
     private static final String SQL_SELECT_ID = "SELECT * FROM roles WHERE id = ?";
     private static final String SQL_INSERT = "INSERT INTO roles (nombre) VALUES(?)";
-    private static final String SQL_UPDATE = "UPDATE usuarios SET username=?,email=?,password=?,rol_id=? WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE roles SET nombre=? WHERE id=?";
     private static final String SQL_DELETE = "DELETE FROM usuarios WHERE id = ?";
 
     static {
@@ -100,22 +100,19 @@ public class DaoMySqlRolUsuario implements Dao<Rol> {
     }
 
     @Override
-    public Usuario modificar(Usuario usuario) {
+    public Rol modificar(Rol rol) {
         try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_UPDATE)) {
-            ps.setString(1, usuario.getUsername());
-            ps.setString(2, usuario.getEmail());
-            ps.setString(3, usuario.getPassword());
-            ps.setLong(4, usuario.getRol().getId());
-            ps.setLong(5, usuario.getId());
+            ps.setString(1, rol.getNombre());
+            ps.setLong(2, rol.getId());
 
             if (ps.executeUpdate() != 1) {
                 throw new DalException("Se ha modificar un número de registros erroneo");
             } else {
-                return usuario;
+                return rol;
             }
 
         } catch (SQLException e) {
-            throw new DalException("No se ha podido modificar el usuario: " + usuario, e);
+            throw new DalException("No se ha podido modificar el rol: " + rol, e);
         }
     }
 
