@@ -23,7 +23,7 @@ public class DaoMySqlRolUsuario implements Dao<Rol> {
     private static final String SQL_SELECT_ID = "SELECT * FROM roles WHERE id = ?";
     private static final String SQL_INSERT = "INSERT INTO roles (nombre) VALUES(?)";
     private static final String SQL_UPDATE = "UPDATE roles SET nombre=? WHERE id=?";
-    private static final String SQL_DELETE = "DELETE FROM usuarios WHERE id = ?";
+    private static final String SQL_DELETE = "DELETE FROM roles WHERE id = ?";
 
     static {
         try {
