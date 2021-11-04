@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.bohdeveloper.pizzasaturn.dal.DalException;
@@ -94,7 +95,9 @@ public class DaoMySqlUsuario implements Dao<Usuario> {
 
     @Override
     public Usuario insertar(Usuario usuario) {
-        try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_INSERT)) {
+
+        System.out.println(usuario);
+        try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, usuario.getUsername());
             ps.setString(2, usuario.getEmail());
             ps.setString(3, usuario.getPassword());

@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.bohdeveloper.pizzasaturn.dal.DalException;
 import com.bohdeveloper.pizzasaturn.dal.Dao;
 import com.bohdeveloper.pizzasaturn.entidades.usuarios.Rol;
-import com.bohdeveloper.pizzasaturn.entidades.usuarios.Usuario;
 
 import org.springframework.stereotype.Repository;
 
@@ -50,7 +50,7 @@ public class DaoMySqlRolUsuario implements Dao<Rol> {
             ArrayList<Rol> roles = new ArrayList<>();
 
             while (rs.next()) {
-                roles.add(new Rol(rs.getLong("u.id"), rs.getString("u.nombre")));
+                roles.add(new Rol(rs.getLong("u.id"), rs.getString("u.nombre"), null));
             }
 
             return roles;
@@ -69,22 +69,24 @@ public class DaoMySqlRolUsuario implements Dao<Rol> {
 
             ResultSet rs = ps.executeQuery();
 
+            Rol rol = null;
+
             while (rs.next()) {
-               Rol rol = new Rol(rs.getLong("r.id"), rs.getString("r.nombre"));
+                rol = new Rol(rs.getLong("r.id"), rs.getString("r.nombre"), null);
             }
 
             return rol;
         } catch (SQLException e) {
-            throw new DalException("No se ha encontrado el usuario con id: " + id, e);
+            throw new DalException("No se ha encontrado el rol con id: " + id, e);
         }
 
     }
 
     @Override
     public Rol insertar(Rol rol) {
-        try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_INSERT)) {
+        try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, rol.getNombre());
-          
+
             if (ps.executeUpdate() != 1) {
                 throw new DalException("Se ha insertado un número de registros erroneo");
             } else {
@@ -117,15 +119,15 @@ public class DaoMySqlRolUsuario implements Dao<Rol> {
     }
 
     @Override
-	public void borrar(long id) {
-		try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_DELETE)) {
-			ps.setLong(1, id);
+    public void borrar(long id) {
+        try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_DELETE)) {
+            ps.setLong(1, id);
 
-			if (ps.executeUpdate() != 1) {
-				throw new DalException("Se ha borrado un número de registros diferente de uno");
-			}
-		} catch (Exception e) {
-			throw new DalException("No se ha podido borrar el registro cuyo id es " + id, e);
-		}
-	}
+            if (ps.executeUpdate() != 1) {
+                throw new DalException("Se ha borrado un número de registros diferente de uno");
+            }
+        } catch (Exception e) {
+            throw new DalException("No se ha podido borrar el registro cuyo id es " + id, e);
+        }
+    }
 }
