@@ -53,7 +53,7 @@ public class DaoMySqlUsuario implements Dao<Usuario> {
 
             while (rs.next()) {
                 usuario = new Usuario(rs.getLong("u.id"), rs.getString("u.username"), rs.getString("u.email"),
-                        rs.getString("u.password"), null);
+                        rs.getString("u.password"));
 
                 usuario.setRol(new Rol(rs.getLong("r.id"), rs.getString("r.nombre"), null));
                 usuarios.add(usuario);
@@ -79,7 +79,7 @@ public class DaoMySqlUsuario implements Dao<Usuario> {
 
             while (rs.next()) {
                 usuario = new Usuario(rs.getLong("u.id"), rs.getString("u.username"), rs.getString("u.email"),
-                        rs.getString("u.password"), null);
+                        rs.getString("u.password"));
 
                 usuario.setRol(new Rol(rs.getLong("r.id"), rs.getString("r.nombre"), null));
 

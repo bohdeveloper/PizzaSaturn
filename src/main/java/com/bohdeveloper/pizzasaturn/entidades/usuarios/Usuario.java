@@ -28,11 +28,40 @@ public class Usuario {
 
     @Basic(optional = false)
     private String email;
-    
+
     @Basic(optional = false)
     private String password;
 
+    @Basic(optional = true)
+    private String password1;
+
+    @Basic(optional = true)
+    private String password2;
+
     @ManyToOne(optional = false)
     private Rol rol;
+
+    public Usuario(Long id, String username, String email, String password, Rol rol) {
+        setId(id);
+        setUsername(username);
+        setEmail(email);
+        setPassword(password);
+        setRol(rol);
+    }
+
+    public Usuario(Long id, String username, String email, String password1, String password2) {
+        setId(id);
+        setUsername(username);
+        setEmail(email);
+        setPassword1(password1);
+        setPassword(password2);
+    }
+
+    public Usuario(Long id, String username, String email, String password) {
+        setId(id);
+        setUsername(username);
+        setEmail(email);
+        setPassword(password);
+    }
 
 }
