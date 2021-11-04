@@ -2,6 +2,8 @@ package com.bohdeveloper.pizzasaturn.servicio;
 
 import com.bohdeveloper.pizzasaturn.entidades.usuarios.Usuario;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,17 +12,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RegistrarUsuario {
 
     @RequestMapping(value = "registroUsuario", method = RequestMethod.POST)
-    public String registroUsuario(Usuario usuario) {
+    public String registroUsuario(Usuario postUsuario) {
 
-        System.out.println(usuario.getUsername() + " " + usuario.getPassword1() + " " + usuario.getPassword2() + " " + usuario.getEmail());
+        String password1 = postUsuario.getPassword1();
+        String password2 = postUsuario.getPassword2();
 
-        return "login.html";
+        if (password1.equals(password2)) {
 
-        /*         Usuario usuario = new usuario(username, );
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        return "registro.html";
+            String encodePassword = passwordEncoder.encode(password2);
 
-        return "login.html"; */
+            Usuario usuario = new Usuario(postUsuario.getUsername(), encodePassword, postUsuario.getEmail(),
+                    postUsuario.getRol());
+
+                    
+
+            System.out.println("Registro completo");
+            return "login.html";
+        } else {
+            System.out.println("Contraseña incorrecta");
+            return "registro.html";
+        }
+
     }
 
 }

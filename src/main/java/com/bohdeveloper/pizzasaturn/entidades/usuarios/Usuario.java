@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,10 +35,12 @@ public class Usuario {
     @Basic(optional = false)
     private String password;
 
-    @Basic(optional = true)
+    @JsonInclude()
+    @Transient
     private String password1;
 
-    @Basic(optional = true)
+    @JsonInclude()
+    @Transient
     private String password2;
 
     @ManyToOne(optional = false)
@@ -55,6 +60,13 @@ public class Usuario {
         setEmail(email);
         setPassword1(password1);
         setPassword(password2);
+    }
+
+    public Usuario(String username, String email, String password, Rol rol) {
+        setUsername(username);
+        setEmail(email);
+        setPassword(password);
+        setRol(rol);
     }
 
     public Usuario(Long id, String username, String email, String password) {
