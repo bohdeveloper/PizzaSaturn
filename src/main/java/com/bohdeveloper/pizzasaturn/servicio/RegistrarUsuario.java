@@ -36,10 +36,10 @@ public class RegistrarUsuario {
             daoUsuario.insertar(usuario);
 
             System.out.println("Registro completo");
-            return "login.html";
+            return "login";
         } else {
             System.out.println("Contraseña incorrecta");
-            return "registro.html";
+            return "registro";
         }
 
     }
