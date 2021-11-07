@@ -66,15 +66,15 @@ public class PizzasaturnApplication implements CommandLineRunner {
 
 		// Creación de usuarios
 		Rol rolAdmin = roRep.findByNombre("ADMIN");
-		Usuario admin = new Usuario(null, "admin", "admin@pizzasaturn.com",
+		Usuario admin = new Usuario("admin", "admin@pizzasaturn.com",
 				"$2a$12$Jlz419IFeL3JNzraQIxdBe.1gaAOHUyw3PrV/eyd97lruJrvzaC.2", rolAdmin);
 
 		Rol rolUser = roRep.findByNombre("USER");
-		Usuario user = new Usuario(null, "user", "user@pizzasaturn.com",
+		Usuario user = new Usuario("user", "user@pizzasaturn.com",
 				"$2a$12$Jlz419IFeL3JNzraQIxdBe.1gaAOHUyw3PrV/eyd97lruJrvzaC.2", rolUser);
 
 		Rol rolUserPro = roRep.findByNombre("USERPRO");
-		Usuario userpro = new Usuario(null, "userpro", "userpro@pizzasaturn.com",
+		Usuario userpro = new Usuario("userpro", "userpro@pizzasaturn.com",
 				"$2a$12$Jlz419IFeL3JNzraQIxdBe.1gaAOHUyw3PrV/eyd97lruJrvzaC.2", rolUserPro);
 
 		usRep.save(admin);
@@ -146,25 +146,31 @@ public class PizzasaturnApplication implements CommandLineRunner {
 		Producto pizSat = new Producto(null, "Pizza Saturn", new BigDecimal(12.90), 1, null, catPiz, null, null, null);
 		Inventario cantPizSat = new Inventario(null, 10, f_cadu, pizSat);
 
-		Producto pizMar = new Producto(null, "Pizza margarita", new BigDecimal(09.90), 1, null, catPiz, null, null, null);
+		Producto pizMar = new Producto(null, "Pizza margarita", new BigDecimal(09.90), 1, null, catPiz, null, null,
+				null);
 		Inventario cantPizMar = new Inventario(null, 10, f_cadu, pizMar);
 
-		Producto pizCar = new Producto(null, "Pizza carbonara", new BigDecimal(12.90), 1, null, catPiz, null, null, null);
+		Producto pizCar = new Producto(null, "Pizza carbonara", new BigDecimal(12.90), 1, null, catPiz, null, null,
+				null);
 		Inventario cantPizCar = new Inventario(null, 10, f_cadu, pizCar);
 
 		Producto pizRom = new Producto(null, "Pizza romana", new BigDecimal(10.90), 1, null, catPiz, null, null, null);
 		Inventario cantPizRom = new Inventario(null, 10, f_cadu, pizRom);
 
-		Producto pizBar = new Producto(null, "Pizza barbacoa", new BigDecimal(12.90), 1, null, catPiz, null, null, null);
+		Producto pizBar = new Producto(null, "Pizza barbacoa", new BigDecimal(12.90), 1, null, catPiz, null, null,
+				null);
 		Inventario cantPizBar = new Inventario(null, 10, f_cadu, pizBar);
 
-		Producto pizCua = new Producto(null, "Pizza cuatro quesos", new BigDecimal(12.90), 1, null, catPiz, null, null, null);
+		Producto pizCua = new Producto(null, "Pizza cuatro quesos", new BigDecimal(12.90), 1, null, catPiz, null, null,
+				null);
 		Inventario cantPizCua = new Inventario(null, 10, f_cadu, pizCua);
 
-		Producto pizMarin = new Producto(null, "Pizza marinera", new BigDecimal(10.90), 1, null, catPiz, null, null, null);
+		Producto pizMarin = new Producto(null, "Pizza marinera", new BigDecimal(10.90), 1, null, catPiz, null, null,
+				null);
 		Inventario cantPizMarin = new Inventario(null, 10, f_cadu, pizMarin);
 
-		Producto pizHaw = new Producto(null, "Pizza hawaiana", new BigDecimal(11.90), 1, null, catPiz, null, null, null);
+		Producto pizHaw = new Producto(null, "Pizza hawaiana", new BigDecimal(11.90), 1, null, catPiz, null, null,
+				null);
 		Inventario cantPizHaw = new Inventario(null, 10, f_cadu, pizHaw);
 
 		prRep.save(pizSat);
@@ -225,22 +231,28 @@ public class PizzasaturnApplication implements CommandLineRunner {
 
 		// Complementos
 		ProductoCategoria catCom = prcatRep.findByNombre("Complementos");
-		Producto metPollo = new Producto(null, "Meteoritos de pollo", new BigDecimal(03.90), 1, null, catCom, null, null, null);
+		Producto metPollo = new Producto(null, "Meteoritos de pollo", new BigDecimal(03.90), 1, null, catCom, null,
+				null, null);
 		Inventario cantMetPollo = new Inventario(null, 10, f_cadu, metPollo);
 
-		Producto alPollo = new Producto(null, "Alitas de pollo", new BigDecimal(03.90), 1, null, catCom, null, null, null);
+		Producto alPollo = new Producto(null, "Alitas de pollo", new BigDecimal(03.90), 1, null, catCom, null, null,
+				null);
 		Inventario cantAlPollo = new Inventario(null, 10, f_cadu, alPollo);
 
-		Producto metQueso = new Producto(null, "Meteoritos de queso", new BigDecimal(03.90), 1, null, catCom, null, null, null);
+		Producto metQueso = new Producto(null, "Meteoritos de queso", new BigDecimal(03.90), 1, null, catCom, null,
+				null, null);
 		Inventario cantMetQueso = new Inventario(null, 10, f_cadu, metQueso);
 
-		Producto orbCeb = new Producto(null, "Órbitas de cebolla", new BigDecimal(01.90), 1, null, catCom, null, null, null);
+		Producto orbCeb = new Producto(null, "Órbitas de cebolla", new BigDecimal(01.90), 1, null, catCom, null, null,
+				null);
 		Inventario cantOrbCeb = new Inventario(null, 10, f_cadu, orbCeb);
 
-		Producto rayPat = new Producto(null, "Rayos de patata", new BigDecimal(01.20), 1, null, catCom, null, null, null);
+		Producto rayPat = new Producto(null, "Rayos de patata", new BigDecimal(01.20), 1, null, catCom, null, null,
+				null);
 		Inventario cantRayPat = new Inventario(null, 10, f_cadu, rayPat);
 
-		Producto lunPat = new Producto(null, "Lunas de patata", new BigDecimal(01.90), 1, null, catCom, null, null, null);
+		Producto lunPat = new Producto(null, "Lunas de patata", new BigDecimal(01.90), 1, null, catCom, null, null,
+				null);
 		Inventario cantLunPat = new Inventario(null, 10, f_cadu, lunPat);
 
 		Producto comSat = new Producto(null, "Combo Saturn", new BigDecimal(04.90), 1, null, catCom, null, null, null);
@@ -287,10 +299,12 @@ public class PizzasaturnApplication implements CommandLineRunner {
 		Producto sevUp = new Producto(null, "7up 50cl", new BigDecimal(01.90), 1, null, catBeb, null, null, null);
 		Inventario cantSevUp = new Inventario(null, 10, f_cadu, sevUp);
 
-		Producto cerv = new Producto(null, "Cerveza Alhambra 33cl", new BigDecimal(01.90), 1, null, catBeb, null, null, null);
+		Producto cerv = new Producto(null, "Cerveza Alhambra 33cl", new BigDecimal(01.90), 1, null, catBeb, null, null,
+				null);
 		Inventario cantCerv = new Inventario(null, 10, f_cadu, cerv);
 
-		Producto agua = new Producto(null, "Agua Font Vella 50cl", new BigDecimal(01.90), 1, null, catBeb, null, null, null);
+		Producto agua = new Producto(null, "Agua Font Vella 50cl", new BigDecimal(01.90), 1, null, catBeb, null, null,
+				null);
 		Inventario cantAgua = new Inventario(null, 10, f_cadu, agua);
 
 		prRep.save(coca);
@@ -328,7 +342,8 @@ public class PizzasaturnApplication implements CommandLineRunner {
 		Producto helSat = new Producto(null, "Helado Saturn", new BigDecimal(04.90), 1, null, catPos, null, null, null);
 		Inventario cantHelSat = new Inventario(null, 10, f_cadu, helSat);
 
-		Producto tarQueso = new Producto(null, "Tarta de queso casera", new BigDecimal(04.90), 1, null, catPos, null, null, null);
+		Producto tarQueso = new Producto(null, "Tarta de queso casera", new BigDecimal(04.90), 1, null, catPos, null,
+				null, null);
 		Inventario cantTarQueso = new Inventario(null, 10, f_cadu, tarQueso);
 
 		Producto flan = new Producto(null, "Flan casero", new BigDecimal(03.90), 1, null, catPos, null, null, null);
@@ -337,7 +352,8 @@ public class PizzasaturnApplication implements CommandLineRunner {
 		Producto friPie = new Producto(null, "Frigo pié", new BigDecimal(01.20), 1, null, catPos, null, null, null);
 		Inventario cantFriPie = new Inventario(null, 10, f_cadu, friPie);
 
-		Producto crep = new Producto(null, "Crep de chocolate y nata", new BigDecimal(01.20), 1, null, catPos, null, null, null);
+		Producto crep = new Producto(null, "Crep de chocolate y nata", new BigDecimal(01.20), 1, null, catPos, null,
+				null, null);
 		Inventario cantCrep = new Inventario(null, 10, f_cadu, crep);
 
 		prRep.save(choLun);

@@ -1,7 +1,9 @@
 <div th:replace="~{inc/head}"></div>
 
 <h3 class="p-4 mt-5 mb-3 text-center text-danger font-weight-light">¡Será un placer conocerte!</h3>
-
+<div th:if="${usuario}">
+    <p th:text="${usuario.errores}"></p>
+</div>
 <form class="m-2 pagMinHeight" th:action="@{/registroUsuario}" method="post">
     <div class="row">
         <div class="col-1 col-sm-3 col-lg-3"></div>

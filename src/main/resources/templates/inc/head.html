@@ -35,10 +35,10 @@
                             <a class="btn btn-danger pl-3 pr-3" aria-current="page" href="#"
                                 th:href="@{/tienda}">TIENDA</a>
                         </li>
-                        
+
                         <li th:if="${usuario != null}" class="nav-item">
                             <form th:action="@{/logout}" method="post">
-                                <button  class="btn btn-danger ms-3">CERRAR SESIÓN</button>
+                                <button class="btn btn-danger ms-3">CERRAR SESIÓN</button>
                             </form>
                         </li>
                     </ul>
@@ -46,3 +46,10 @@
             </div>
         </div>
     </nav>
+
+    <th:if test="${mensaje != null}">
+        <div th:class="'alert alert-' + ${tipo} + ' alert-dismissible fade show text-center'" role="alert">
+            <span th:text="${mensaje}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </th:if>
